@@ -59,7 +59,7 @@ export default {
       }
       else {
         return {
-          'height': this.scrollHeight
+          height: this.scrollHeight
         }
       }
     },
@@ -78,7 +78,7 @@ export default {
     getHeaderLabel: function () {
       if (this.forceStartOfWeek) {
         let dateReturn = ''
-        let bookendDates = this.getForcedWeekBookendDates()
+        const bookendDates = this.getForcedWeekBookendDates()
         if (bookendDates.first.month !== bookendDates.last.month) {
           dateReturn += bookendDates.first.toFormat('MMM')
           if (bookendDates.first.year !== bookendDates.last.year) {
@@ -95,7 +95,7 @@ export default {
     },
     doUpdate: function () {
       this.mountSetDate()
-      let payload = this.getMultiDayDisplayDates(
+      const payload = this.getMultiDayDisplayDates(
         this.buildWeekDateArray(this.numDays, this.sundayFirstDayOfWeek)
       )
       this.triggerDisplayChange(
@@ -112,29 +112,29 @@ export default {
         this.eventRef + ':navMovePeriod',
         params
       )
-      let payload = this.getMultiDayDisplayDates(
+      const payload = this.getMultiDayDisplayDates(
         this.buildWeekDateArray()
       )
-      payload['moveUnit'] = params.unitType
-      payload['moveAmount'] = params.amount
+      payload.moveUnit = params.unitType
+      payload.moveAmount = params.amount
       this.triggerDisplayChange(
         this.eventRef,
         payload
       )
     },
     scrollToElement: function (el) {
-      let target = this.getScrollTarget(el)
-      let offset = el.offsetTop - el.scrollHeight
-      let duration = 0
+      const target = this.getScrollTarget(el)
+      const offset = el.offsetTop - el.scrollHeight
+      const duration = 0
       this.setScrollPosition(target, offset, duration)
     },
     scrollToFirstDay: function () {
-      let thisId = this.getDayHourId(
+      const thisId = this.getDayHourId(
         this.eventRef,
         this.weekDateArray[0],
         (this.dayDisplayStartHour + 1)
       )
-      let thisEl = document.getElementById(thisId)
+      const thisEl = document.getElementById(thisId)
       this.scrollToElement(thisEl)
     },
     getMultiDayDisplayDates: function (weekDateArray) {
@@ -163,16 +163,16 @@ export default {
       scrollTarget.scrollTop = offset
     },
     animScrollTo: function (el, to, duration) {
-      let pos = this.getScrollPosition(el)
+      const pos = this.getScrollPosition(el)
       if (duration <= 0) {
         if (pos !== to) {
           this.setScroll(el, to)
         }
         return
       }
-      let _this = this
+      const _this = this
       requestAnimationFrame(function () {
-        let newPos = pos + (to - pos) / Math.max(16, duration) * 16
+        const newPos = pos + (to - pos) / Math.max(16, duration) * 16
         _this.setScroll(el, newPos)
         if (newPos !== to) {
           _this.animScrollTo(el, to, duration - 16)

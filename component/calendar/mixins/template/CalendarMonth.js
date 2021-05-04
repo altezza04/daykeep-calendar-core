@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import DateTime from 'luxon/src/datetime'
 
 const debug = require('debug')('calendar:CalendarMonth')

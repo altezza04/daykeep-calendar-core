@@ -61,7 +61,7 @@ export default {
   },
   computed: {
     columnCss: function () {
-      let returnVal = {
+      const returnVal = {
         'calendar-day-column-content': true,
         'relative-position': true,
         'calendar-day-column-weekend': this.isWeekendDay(this.workingDate),
@@ -83,7 +83,7 @@ export default {
   },
   methods: {
     calculateDayEventClass: function (thisEvent) {
-      let classes = {}
+      const classes = {}
       if (thisEvent.numberOfOverlaps > 0) {
         classes['calendar-day-event-overlap'] = true
         if (thisEvent.overlapIteration === 1) {
@@ -93,7 +93,7 @@ export default {
       return classes
     },
     calculateDayEventStyle: function (thisEvent) {
-      let style = {
+      const style = {
         position: 'absolute',
         'z-index': 10,
         width: '100%'
@@ -129,28 +129,28 @@ export default {
           height: 0
         }
       }
-      style['top'] = positions.top
-      style['height'] = positions.height
+      style.top = positions.top
+      style.height = positions.height
       if (thisEvent.numberOfOverlaps > 0) {
-        let thisWidth = (100 / (thisEvent.numberOfOverlaps + 1)).toFixed(2)
-        let thisShift = thisWidth * (thisEvent.overlapIteration - 1)
-        style['width'] = thisWidth + '%'
+        const thisWidth = (100 / (thisEvent.numberOfOverlaps + 1)).toFixed(2)
+        const thisShift = thisWidth * (thisEvent.overlapIteration - 1)
+        style.width = thisWidth + '%'
         style['max-width'] = thisWidth + '%'
-        style['left'] = thisShift + '%'
+        style.left = thisShift + '%'
         style['z-index'] = 10 + thisEvent.overlapIteration
       }
       return style
     },
     calculateDayEventPosition: function (startDateObject, endDateObject) {
-      let startMidnight = startDateObject.set({
+      const startMidnight = startDateObject.set({
         hours: 0,
         minutes: 0,
         seconds: 0,
         milliseconds: 0
       })
-      let topMinuteCount = startDateObject.diff(startMidnight).as('minutes')
-      let heightMinuteCount = endDateObject.diff(startDateObject).as('minutes')
-      let sizePerMinute = this.dayCellHeight / 60
+      const topMinuteCount = startDateObject.diff(startMidnight).as('minutes')
+      const heightMinuteCount = endDateObject.diff(startDateObject).as('minutes')
+      const sizePerMinute = this.dayCellHeight / 60
       debug('dayEventPosition = ', {
         start: startDateObject.toISO(),
         topMinuteCount: topMinuteCount,
@@ -166,7 +166,7 @@ export default {
     },
     calculateTimePosition: function () {
       let pos = {}
-      let thisDateObject = this.makeDT(DateTime.local())
+      const thisDateObject = this.makeDT(DateTime.local())
       if (
         thisDateObject.hasSame(this.workingDate, 'day') &&
         thisDateObject.hasSame(this.workingDate, 'month') &&

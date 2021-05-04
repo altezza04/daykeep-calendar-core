@@ -55,7 +55,7 @@ export default {
       this.buildWeekDateArray(this.numberOfDays, this.sundayFirstDayOfWeek)
     },
     isCurrentDayLabel: function (thisDay, checkMonthOnly) {
-      let now = DateTime.local()
+      const now = DateTime.local()
       thisDay = this.makeDT(thisDay)
       if (checkMonthOnly === true) {
         return (

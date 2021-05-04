@@ -25,7 +25,7 @@ export default {
     },
     doUpdate: function () {
       this.mountSetDate()
-      let payload = this.getWeekArrayDisplayDates(this.generateCalendarCellArray())
+      const payload = this.getWeekArrayDisplayDates(this.generateCalendarCellArray())
       this.triggerDisplayChange(
         this.eventRef,
         payload
@@ -40,7 +40,7 @@ export default {
         })
       )
       let currentWeekOfYear = this.getWeekNumber(currentDay, this.sundayFirstDayOfWeek)
-      let weekArray = []
+      const weekArray = []
       let currentWeekArray = []
       let thisDayObject = {}
       for (let thisDateOfMonth = 1; thisDateOfMonth <= 31; thisDateOfMonth++) {
@@ -95,9 +95,9 @@ export default {
         // }
         params
       )
-      let payload = this.getWeekArrayDisplayDates(this.generateCalendarCellArray())
-      payload['moveUnit'] = params.unitType
-      payload['moveAmount'] = params.amount
+      const payload = this.getWeekArrayDisplayDates(this.generateCalendarCellArray())
+      payload.moveUnit = params.unitType
+      payload.moveAmount = params.amount
       this.triggerDisplayChange(
         this.eventRef,
         payload
@@ -105,9 +105,9 @@ export default {
     },
     getWeekArrayDisplayDates: function (weekArray) {
       // this takes a weekArray and figures out the values to send for a page display event
-      let startDateObj = weekArray[0][0].dateObject
+      const startDateObj = weekArray[0][0].dateObject
       const lastWeek = weekArray[weekArray.length - 1]
-      let endDateObj = lastWeek[lastWeek.length - 1].dateObject
+      const endDateObj = lastWeek[lastWeek.length - 1].dateObject
       return {
         startDate: startDateObj.toISODate(),
         endDate: endDateObj.toISODate(),
@@ -122,10 +122,19 @@ export default {
         return
       }
       if (this.fullComponentRef) {
-        this.fullMoveToDay(dateObject)
+        // this.fullMoveToDay(dateObject)
       }
-      this.handleNavMove({ absolute: dateObject })
-      this.triggerDayClick(dateObject, this.eventRef)
+      // this.triggerDayClick(dateObject, this.eventRef)
+      const defaultEventObj = {
+        summary: 'My Test',
+        description: 'Some extra info goes here',
+        color: 'negative',
+        start: { dateObject: dateObject, isAllDay: false },
+        end: { dateObject: dateObject, isAllDay: false },
+        newEvent: true,
+      };
+      this.$emit('click', defaultEventObj)
+      this.triggerEventClick(defaultEventObj, this.eventRef)
     },
     handleCalendarEventClick: function () {
       this.eventClicked = true

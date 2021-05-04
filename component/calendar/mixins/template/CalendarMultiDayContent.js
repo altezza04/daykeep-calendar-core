@@ -156,7 +156,7 @@ export default {
         numDays: this.numDays,
         viewType: this.$options.name
       }
-    },
+    }
     // getScrollTarget (el) {
     //   return el.closest('.scroll,.scroll-y,.overflow-auto') || window
     // },

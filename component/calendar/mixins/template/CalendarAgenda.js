@@ -57,7 +57,7 @@ export default {
     },
     getWeekTitle: function (firstDate) {
       firstDate = this.makeDT(firstDate)
-      let lastDate = firstDate.plus({ days: 6 })
+      const lastDate = firstDate.plus({ days: 6 })
       if (firstDate.month === lastDate.month) {
         return this.formatDate(firstDate, 'MMM d - ') + this.formatDate(lastDate, 'd')
       }
@@ -74,9 +74,9 @@ export default {
         this.eventRef + ':navMovePeriod',
         params
       )
-      let payload = this.getAgendaDisplayDates()
-      payload['moveUnit'] = params.unitType
-      payload['moveAmount'] = params.amount
+      const payload = this.getAgendaDisplayDates()
+      payload.moveUnit = params.unitType
+      payload.moveAmount = params.amount
       this.triggerDisplayChange(
         this.eventRef,
         payload

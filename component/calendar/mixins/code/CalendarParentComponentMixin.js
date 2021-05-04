@@ -38,6 +38,10 @@ export default {
       type: Boolean,
       default: false
     },
+    newEvent: {
+      type: Boolean,
+      default: false
+    },
     renderHtml: {
       type: Boolean,
       default: false

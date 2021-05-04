@@ -3,44 +3,48 @@ export default {
   props: {
     eventObject: {
       type: Object,
-      default: () => {}
+      default: () => {},
     },
     color: {
       type: String,
-      default: 'primary'
+      default: 'primary',
     },
     textColor: {
       type: String,
-      default: 'white'
+      default: 'white',
     },
     showTime: {
       type: Boolean,
-      default: true
+      default: true,
     },
     monthStyle: {
       type: Boolean,
-      default: false
+      default: false,
     },
     eventRef: String,
     preventEventDetail: {
       type: Boolean,
-      default: false
+      default: false,
     },
     calendarLocale: {
       type: String,
-      default: () => { return DateTime.local().locale }
+      default: () => {
+        return DateTime.local().locale;
+      },
     },
     calendarTimezone: {
       type: String,
-      default: () => { return DateTime.local().zoneName }
+      default: () => {
+        return DateTime.local().zoneName;
+      },
     },
     allowEditing: {
       type: Boolean,
-      default: false
+      default: false,
     },
     renderHtml: {
       type: Boolean,
-      default: false
+      default: false,
     }
-  }
-}
+  },
+};
